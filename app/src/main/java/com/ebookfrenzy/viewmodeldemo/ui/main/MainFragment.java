@@ -1,6 +1,16 @@
 package com.ebookfrenzy.viewmodeldemo.ui.main;
 
+
+
+
+
+
+
+
+import static com.ebookfrenzy.viewmodeldemo.BR.myViewModel;
+
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,17 +18,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import com.ebookfrenzy.viewmodeldemo.R;
+import com.ebookfrenzy.viewmodeldemo.databinding.MainFragmentBinding;
+
+
 
 public class MainFragment extends Fragment {
 
   private MainViewModel mViewModel;
-  private EditText dollarText;
-  private TextView resultText;
-  private Button  convertButton;
+
+  public MainFragmentBinding binding;
+
 
   public static MainFragment newInstance() {
     return new MainFragment();
@@ -28,29 +38,20 @@ public class MainFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.main_fragment, container, false);
+    binding= DataBindingUtil.inflate(
+        inflater, R.layout.main_fragment, container, false);
+
+    binding.setLifecycleOwner(this);
+    return binding.getRoot();
   }
 
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
+
     mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+    binding.setVariable(myViewModel, mViewModel);
 
-    dollarText = getView().findViewById(R.id.dollarText);
-    resultText = getView().findViewById(R.id.resultText);
-    convertButton = getView().findViewById(R.id.convertButton);
-
-    convertButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (!dollarText.getText().toString().equals("")){
-          mViewModel.setAmount(dollarText.getText().toString());
-          resultText.setText(mViewModel.getResult().toString());
-        } else{
-          resultText.setText("Get your act together");
-        }
-      }
-    });
 
 
   }
