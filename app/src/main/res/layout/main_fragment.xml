@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
 
@@ -9,44 +9,44 @@
       type="com.ebookfrenzy.viewmodeldemo.ui.main.MainViewModel"/>
   </data>
 
-<android.support.constraint.ConstraintLayout
-  android:id="@+id/main"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".ui.main.MainFragment">
+  <android.support.constraint.ConstraintLayout
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainFragment">
 
-  <Button
-    android:id="@+id/convertButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="@{() -> myViewModel.convertValue()}"
-    android:text="Convert"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/resultText"
-    />
-  <EditText
-    android:id="@+id/dollarText"
-    android:layout_width="wrap_content"
-    android:layout_height="47dp"
-    android:ems="10"
-    android:inputType="numberDecimal"
-    android:text="@={myViewModel.dollarValue"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/resultText"
-    />
-  <TextView
-    android:id="@+id/resultText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text='@{safeUnbox(myViewModel.result) == 0.0 ? "Enter Vale" : String.valueOf(safeUnbox(myViewModel.result))+ " euros"}'
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+      android:id="@+id/convertButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="@{() -> myViewModel.convertValue()}"
+      android:text="Convert"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/resultText"
+      />
+    <EditText
+      android:id="@+id/dollarText"
+      android:layout_width="wrap_content"
+      android:layout_height="47dp"
+      android:ems="10"
+      android:inputType="numberDecimal"
+      android:text="@={myViewModel.dollarValue"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/resultText"
+      />
+    <TextView
+      android:id="@+id/resultText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text='@{safeUnbox(myViewModel.result) == 0.0 ? "Enter Vale" : String.valueOf(safeUnbox(myViewModel.result))+ " euros"}'
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
 
-</android.support.constraint.ConstraintLayout>
+  </android.support.constraint.ConstraintLayout>
 </layout>

@@ -7,7 +7,7 @@ public class MainViewModel extends ViewModel {
 
   private  static final Float usd_to_eu_rate = 0.74F;
   public MutableLiveData<String> dollarValue = new MutableLiveData<>();
-  private MutableLiveData<Float> result = new MutableLiveData<>();
+  public MutableLiveData<Float> result = new MutableLiveData<>();
 
   public void convertValue(){
     if ((dollarValue.getValue() != null) && (!dollarValue.getValue().equals(""))){

@@ -4,9 +4,6 @@ package com.ebookfrenzy.viewmodeldemo.ui.main;
 
 
 
-
-
-
 import static com.ebookfrenzy.viewmodeldemo.BR.myViewModel;
 
 import android.arch.lifecycle.ViewModelProviders;
@@ -21,11 +18,9 @@ import android.view.ViewGroup;
 import com.ebookfrenzy.viewmodeldemo.R;
 import com.ebookfrenzy.viewmodeldemo.databinding.MainFragmentBinding;
 
-
-
 public class MainFragment extends Fragment {
 
-  private MainViewModel mViewModel;
+  public MainViewModel mViewModel;
 
   public MainFragmentBinding binding;
 
@@ -38,7 +33,7 @@ public class MainFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    binding= DataBindingUtil.inflate(
+    binding = DataBindingUtil.inflate(
         inflater, R.layout.main_fragment, container, false);
 
     binding.setLifecycleOwner(this);
@@ -51,7 +46,6 @@ public class MainFragment extends Fragment {
 
     mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
     binding.setVariable(myViewModel, mViewModel);
-
 
 
   }
